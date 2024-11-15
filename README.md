@@ -2,6 +2,8 @@
 
 R scripts for a reproducible analysis of logistic growth
 
+## Question 1
+
 #### Plotting the logistic growth data
 
 ```{r}
@@ -142,3 +144,116 @@ K = 6.00e+10
 An excellent fit of our model is evidenced on the below plot, where the function logistic_fun was used to plot the red line superimposed on our original dataset.
 
 ![](images/clipboard-1087675519.png)
+
+## Question 2
+
+Calculating the population size at t=4980 minutes
+
+Assuming that the population grows exponentially means substituting my values of N0, r and K into the following equation:
+
+N(t) = N0e\^(rt)
+
+By my estimates:
+
+N0 = 982
+
+r = 0.01
+
+Therefore:
+
+N(t=4980) = 982\*e\^(0.01\*4980)
+
+N(t=4980) = 4.17e+24
+
+Therefore, assuming the population grows exponentially, the population size at t=4980 minutes is 4.17e+24
+
+#### Comparing this value to the population size predicted under logistic growth
+
+Under the logistic growth model, the population size at t=4980 minutes is 6.00e+10
+
+(The logistic model equation):
+
+![](images/clipboard-2036275376.png)
+
+Therefore, the population size at time t=4980 is (4.17e+24)/(6.00e+10) times bigger (6.95e+13 times bigger).
+
+The population size predicted by exponential growth is therefore many orders bigger than that predicted by logistic growth, at t = 4980 minutes).
+
+## Question 3
+
+Adding an R script to make a graph comparing the exponential and logistic growth curves.
+
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+
+growth_data <- read.csv("experiment.csv")
+
+#Plotting the logistic growth curve
+logistic_growth_plot <- ggplot(aes(t,N), data = growth_data) +
+  
+  geom_point() +
+  
+  xlab("Time (minutes)") +
+  
+  ylab("Population Size") +
+  ggtitle("Logistic Growth")
+
+
+#Plotting the exponential growth curve 
+#N(t) = N0e^(rt)
+#Defining my parameters (I have ended the curve at the same point of t=5000).
+
+N0 <- 982 #This is the initial population size
+r <- 0.01 #This is the growth rate
+t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being calculated from the equation
+
+#Calculating my Nt values
+
+Nt <- N0*exp(r*t)
+
+#Creating a function for exponential growth
+
+exponential_growth <- function(t) {
+  
+  Nt <- N0*exp(r*t)
+  
+  return(Nt)
+  
+}
+
+
+N0 <- 982 #This is the initial population size
+r <- 0.01 #This is the growth rate
+t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being calculated from the equation
+
+#Storing the output values from my function (with 't' input values)
+
+Exponential_size <- exponential_growth(t)
+
+#Creating a data frame
+
+Exponential_df <- data.frame(
+  x = t,
+  y = Exponential_size
+)
+
+exponential_growth_plot <- ggplot(aes(t,Nt), data = Exponential_df) +
+  
+  geom_point() +
+  
+  xlab("Time (minutes)") +
+  
+  ylab("Population Size") +
+  ggtitle("Exponential Growth")
+
+#It will be more useful to compare these plots side by side.
+#Using the gridExtra package
+
+grid.arrange(logistic_growth_plot, exponential_growth_plot, ncol = 2)
+
+```
+
+![](images/clipboard-4169369986.png)
+
+(Graph will need cleaned up)
