@@ -230,7 +230,8 @@ logistic_growth_plot <- ggplot(aes(t,N), data = growth_data) +
 
 N0 <- 982 #This is the initial population size
 r <- 0.01 #This is the growth rate
-t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being calculated from the equation
+t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being calculated from 
+#the equation
 
 #Calculating my Nt values
 
@@ -249,7 +250,8 @@ exponential_growth <- function(t) {
 
 N0 <- 982 #This is the initial population size
 r <- 0.01 #This is the growth rate
-t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being calculated from the equation
+t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being calculated from 
+#the equation
 
 #Storing the output values from my function (with 't' input values)
 
@@ -275,7 +277,9 @@ exponential_growth_plot <- ggplot(aes(t,Nt), data = Exponential_df) +
   theme(plot.title = element_text(hjust = 0.5))
 
 #We could do as we did above, where we plot our function on top of the logistic growth model. 
-#However, the scale factor differences render this graph fairly unhelpful for understanding the dynamics of the logistic response (See Figure 8 on the below panel)
+#However, the scale factor differences render this graph fairly unhelpful 
+#for understanding the dynamics 
+#of the logistic response (See Figure 8 on the below panel)
 
 
 unhelpful_plot <- ggplot(aes(t,N), data = growth_data) +
@@ -306,7 +310,9 @@ grid.arrange(
 )
 ```
 
-![(In Figure 8, the red line represents the exponential growth model, whilst the black points represent the logistic growth model).](images/clipboard-2776603530.png)
+![](images/clipboard-2776603530.png)
+
+In Figure 8, the red line represents our exponential growth function, whilst the black points represent logistic growth.
 
 ```{r}
 #In this chunk of R code I am ensuring that I keep a copy of all the required packages to run this code, in order to allow for reproducibility
