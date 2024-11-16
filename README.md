@@ -274,6 +274,7 @@ exponential_growth_plot <- ggplot(aes(t,Nt), data = Exponential_df) +
   
   theme(plot.title = element_text(hjust = 0.5))
 
+
 #We could do as we did above, where we plot our function on top of the logistic growth model. However, the scale factor differences render this graph fairly unhelpful for understanding the dynamics of the logistic response (See Figure 8 on the below panel)
 
 unhelpful_plot <- ggplot(aes(t,N), data = growth_data) +
