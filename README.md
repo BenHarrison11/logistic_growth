@@ -313,3 +313,5 @@ sink(file = "package-versions.txt")
 sessionInfo()
 sink()
 ```
+
+I have now created a list of all the packages required to run this code.
