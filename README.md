@@ -134,7 +134,7 @@ In this case ln(N) = ln(N0) + rt.
 
 The estimate for the intercept (ln(N0)) is equal to approximately 6.89. Therefore our approximation for N0 is equal to e\^6.89 which is approximately 982. The estimate for the gradient (r) is equal to 0.01. Therefore our approximation for r is 0.01.
 
-##  **Figure 3: Output from summary(model1)**
+## **Figure 3: Output from summary(model1)**
 
 ![](images/clipboard-3236846853.png)
 
@@ -146,7 +146,7 @@ N(t) = K
 
 Therefore our estimate for K is 6.00e+10.
 
-##  **Figure 4: Output from summary(model2)**
+## **Figure 4: Output from summary(model2)**
 
 ![](images/clipboard-2420605694.png)
 
@@ -190,7 +190,7 @@ Therefore, assuming the population grows exponentially, the population size at t
 
 Under the logistic growth model, the population size at t=4980 minutes is 6.00e+10
 
-##  **Figure 6: The Logistic Growth Equation**
+## **Figure 6: The Logistic Growth Equation**
 
 ![](images/clipboard-2036275376.png){width="602"}
 
@@ -274,7 +274,7 @@ exponential_growth_plot <- ggplot(aes(t,Nt), data = Exponential_df) +
   
   theme(plot.title = element_text(hjust = 0.5))
 
-#We could do as we did above, where we plot our function on top of the logistic growth model. However, the scale factor differences render this graph fairly unhelpful (See third graph on Figure 7)
+#We could do as we did above, where we plot our function on top of the logistic growth model. However, the scale factor differences render this graph fairly unhelpful for understanding the dynamics of the logistic response (See Figure 8 on the below panel)
 
 unhelpful_plot <- ggplot(aes(t,N), data = growth_data) +
   
@@ -292,6 +292,7 @@ unhelpful_plot <- ggplot(aes(t,N), data = growth_data) +
 
   #scale_y_continuous(trans='log10')
 
+
 #It will be more useful to compare these plots side by side.
 #Using the gridExtra package
 
@@ -303,4 +304,12 @@ grid.arrange(
 )
 ```
 
-![](images/clipboard-1570593935.png)
+![(In Figure 8, the red line represents the exponential growth model, whilst the black points represent the logistic growth model).](images/clipboard-2776603530.png)
+
+```{r}
+#In this chunk of R code I am ensuring that I keep a copy of all the required packages to run this code, in order to allow for reproducibility
+
+sink(file = "package-versions.txt")
+sessionInfo()
+sink()
+```
