@@ -192,7 +192,7 @@ Under the logistic growth model, the population size at t=4980 minutes is 6.00e+
 
 ##  **Figure 6: The Logistic Growth Equation**
 
-![](images/clipboard-2036275376.png){width="602"}
+![](images/clipboard-2036275376.png)
 
 (4.17e+24)/(6.00e+10) = 6.95e+13
 
