@@ -22,6 +22,7 @@ ggplot(aes(t,N), data = growth_data) +
   
   geom_point()
 
+
   #scale_y_continuous(trans='log10')
 
 
