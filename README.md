@@ -287,7 +287,10 @@ unhelpful_plot <- ggplot(aes(t,N), data = growth_data) +
 
 #It will be more useful to compare these plots side by side.
 #Using the gridExtra package
-
+install.packages("gridExtra")
+install.packages("grid")
+library(gridExtra)
+library(grid)
 grid.arrange(
   logistic_growth_plot, exponential_growth_plot,                
   unhelpful_plot,                    
