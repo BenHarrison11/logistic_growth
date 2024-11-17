@@ -4,7 +4,7 @@ This R markdown file will take the reader through a reproducible analysis of log
 
 ## Question 1
 
-#### Plotting Logistic growth data
+### Plotting Logistic growth data
 
 ```{r}
 install.packages("ggplot2")
@@ -54,7 +54,7 @@ The first way involved plotting the number of bacteria (N) against time (t). Thi
 
 ![](images/clipboard-508467475.png)
 
-#### Fitting Linear Models
+### Fitting Linear Models
 
 ```{r}
 library(dplyr)
@@ -78,7 +78,7 @@ summary(model2)
 
 In this section, we used the script in the above R chunk to fit different linear models to different parts of the semi-logged data that we saw above. The first case was when K \>\> N0, and t was small. In this first case, we used the dplyr package to filter the data set to time-points below t = 1500, to ensure that we only captured the period of exponential growth. The second case was when N(t) = K, and in this instance we used the dplyr package to filter the data-set to time-points above t = 2500, to ensure that we captured the population at carrying capacity. Having created our two data subsets, we then produced linear models for both, by using the lm() function. With the linear models successfully fitted to our data subsets, we then used the summary function to view estimates for the slope and intercept values, as well as their associated statistical information. These data are fully explored in the results section below.
 
-#### Plotting our Models.
+### Plotting our Models.
 
 In this section we generated our own logistic curve, using the script in the below R chunk to generate the function 'logistic_fun'. This function allowed us to change the parameters N0, r, and K (which we estimated from our linear models as detailed in the results section), and see how well our model fit (in red) onto the plotted data from the original experiment.csv file. Here, we were essentially seeing how well our model approximation fit onto the actual data (see Figure 5).
 
@@ -114,7 +114,7 @@ ggplot(aes(t,N), data = growth_data) +
   #scale_y_continuous(trans='log10')
 ```
 
-#### Results
+### Results
 
 In order to carry out our analyses (on the experiment.csv file), we created a linear approximation for the following logistic equation:
 
@@ -136,7 +136,7 @@ In this case ln(N) = ln(N0) + rt.
 
 The estimate for the intercept (ln(N0)) is equal to approximately 6.89. Therefore our approximation for N0 is equal to e\^6.89 which is approximately 982. The estimate for the gradient (r) is equal to 0.01. Therefore our approximation for r is 0.01.
 
-## **Figure 3: Output from summary(model1)**
+#### **Figure 3: Output from summary(model1)**
 
 ![](images/clipboard-3236846853.png)
 
@@ -148,7 +148,7 @@ N(t) = K
 
 Therefore our estimate for K is 6.00e+10.
 
-## **Figure 4: Output from summary(model2)**
+#### **Figure 4: Output from summary(model2)**
 
 ![](images/clipboard-2420605694.png)
 
@@ -190,7 +190,7 @@ Therefore, assuming the population grows exponentially, the population size at t
 
 Under the logistic growth model, the population size at t=4980 minutes is 6.00e+10
 
-## **Figure 6: The Logistic Growth Equation**
+#### **Figure 6: The Logistic Growth Equation**
 
 ![](images/clipboard-2036275376.png)
 
@@ -240,8 +240,7 @@ exponential_growth <- function(t) {
 
 N0 <- 982 #This is the initial population size
 r <- 0.01 #This is the growth rate
-t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being inputted into 
-#the function
+t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being inputted into the function
 
 #Storing the output values from my function (with 't' input values)
 
@@ -266,9 +265,7 @@ exponential_growth_plot <- ggplot(aes(t,Nt), data = Exponential_df) +
   
   theme(plot.title = element_text(hjust = 0.5))
 
-#We could do as we did above, where we plot our function output with our estimated parameters on top of the logistic growth model. 
-#However, the scale factor differences render this graph fairly unhelpful for understanding the dynamics 
-#of the logistic response (See Figure 8 on the below panel)
+#We could do as we did above, where we plot our function output with our estimated parameters on top of the logistic growth model.However, the scale factor differences render this graph fairly unhelpful for understanding the dynamics of the logistic response (See Figure 8 on the below panel)
 
 
 unhelpful_plot <- ggplot(aes(t,N), data = growth_data) +
@@ -311,4 +308,4 @@ sessionInfo()
 sink()
 ```
 
-I have now created a list of all the packages required to run this code.
+With the analysis complete, I have now created a list of all the packages required to run this code, in order to ensure that someone else could easily reproduce my work.
