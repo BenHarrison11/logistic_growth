@@ -4,7 +4,7 @@ This R markdown file will take the reader through a reproducible analysis of log
 
 ## Question 1
 
-### Plotting Logistic growth data
+### Plotting Logistic growth data:
 
 ```{r}
 install.packages("ggplot2")
@@ -54,7 +54,7 @@ The first way involved plotting the number of bacteria (N) against time (t). Thi
 
 ![](images/clipboard-508467475.png)
 
-### Fitting Linear Models
+### Fitting Linear Models:
 
 ```{r}
 library(dplyr)
@@ -78,7 +78,7 @@ summary(model2)
 
 In this section, we used the script in the above R chunk to fit different linear models to different parts of the semi-logged data that we saw above. The first case was when K \>\> N0, and t was small. In this first case, we used the dplyr package to filter the data set to time-points below t = 1500, to ensure that we only captured the period of exponential growth. The second case was when N(t) = K, and in this instance we used the dplyr package to filter the data-set to time-points above t = 2500, to ensure that we captured the population at carrying capacity. Having created our two data subsets, we then produced linear models for both, by using the lm() function. With the linear models successfully fitted to our data subsets, we then used the summary function to view estimates for the slope and intercept values, as well as their associated statistical information. These data are fully explored in the results section below.
 
-### Plotting our Models.
+### Plotting our Models:
 
 In this section we generated our own logistic curve, using the script in the below R chunk to generate the function 'logistic_fun'. This function allowed us to change the parameters N0, r, and K (which we estimated from our linear models as detailed in the results section), and see how well our model fit (in red) onto the plotted data from the original experiment.csv file. Here, we were essentially seeing how well our model approximation fit onto the actual data (see Figure 5).
 
@@ -114,7 +114,7 @@ ggplot(aes(t,N), data = growth_data) +
   #scale_y_continuous(trans='log10')
 ```
 
-### Results
+### Results:
 
 In order to carry out our analyses (on the experiment.csv file), we created a linear approximation for the following logistic equation:
 
