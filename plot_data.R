@@ -27,6 +27,7 @@ ggplot(aes(t,N), data = growth_data) +
   
   theme_bw()
 
+
 sink(file = "package-versions.txt")
 sessionInfo()
 sink()
