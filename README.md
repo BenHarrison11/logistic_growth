@@ -109,9 +109,9 @@ ggplot(aes(t,N), data = growth_data) +
        
   ggtitle("Figure 5: Plotting logistic_fun") +
   
-  theme(plot.title = element_text(hjust = 0.5))
-
-  #scale_y_continuous(trans='log10')
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  
+  scale_y_continuous(trans='log10')
 ```
 
 ### Results:
@@ -164,7 +164,9 @@ K = 6.00e+10
 
 An excellent fit of our model is evidenced on the below plot, where the function logistic_fun was plotted on top of our original dataset.
 
-## ![](images/clipboard-2547790091.png)Question 2
+![](images/clipboard-1053800775.png)
+
+## Question 2
 
 Calculating the population size at t=4980 minutes:
 
@@ -212,22 +214,31 @@ library(ggplot2)
 
 growth_data <- read.csv("experiment.csv")
 
+#Below are the parameters that will be substituted into both functions which are being plotted
+
+N0 <- 982 #This is the initial population size
+r <- 0.01 #This is the growth rate
+t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being inputted into the function
+
 #Plotting the logistic growth curve
-logistic_growth_plot <- ggplot(aes(t,N), data = growth_data) +
+logistic_growth_plot <- ggplot() +
+  
+  geom_function(fun=logistic_fun, colour="red") +
   
   geom_point() +
+  
+  xlim(0, 5000) +
   
   xlab("Time (minutes)") +
   
   ylab("Population Size") +
-  
+       
   ggtitle("Logistic Growth Model") +
   
   theme(plot.title = element_text(hjust = 0.5))
 
 
-#Plotting the exponential growth curve 
-#Creating a function for exponential growth
+#Plotting the exponential growth curve involves first generating a function for exponential growth
 
 exponential_growth <- function(t) {
   
@@ -237,25 +248,13 @@ exponential_growth <- function(t) {
   
 }
 
+#Plotting exponential growth
 
-N0 <- 982 #This is the initial population size
-r <- 0.01 #This is the growth rate
-t <- seq(0, 5000, by = 0.1) #This will give me the sequence of t values that are being inputted into the function
-
-#Storing the output values from my function (with 't' input values)
-
-Exponential_size <- exponential_growth(t)
-
-#Creating a data frame from my function inputs and outputs
-
-Exponential_df <- data.frame(
-  t = t,
-  Nt = Exponential_size
-)
-
-exponential_growth_plot <- ggplot(aes(t,Nt), data = Exponential_df) +
+exponential_growth_plot <- ggplot() +
   
-  geom_point() +
+  geom_function(fun=exponential_growth, colour = "black") +
+  
+  xlim(0, 5000) +
   
   xlab("Time (minutes)") +
   
@@ -263,29 +262,34 @@ exponential_growth_plot <- ggplot(aes(t,Nt), data = Exponential_df) +
   
   ggtitle("Exponential Growth Model") +
   
-  theme(plot.title = element_text(hjust = 0.5))
-
-#We could do as we did above, where we plot our function output with our estimated parameters on top of the logistic growth model.However, the scale factor differences render this graph fairly unhelpful for understanding the dynamics of the logistic response (See Figure 8 on the below panel)
-
-
-unhelpful_plot <- ggplot(aes(t,N), data = growth_data) +
+  theme(plot.title = element_text(hjust = 0.5)) 
+ 
   
-  geom_function(fun=exponential_growth, colour="red") +
   
-  geom_point() +
+
+#It would be more useful to have the functions plotted on top of each other for easier comparisons
+
+
+Combined_plot <- ggplot() +
   
+  geom_function(fun=logistic_fun, colour="red") +
+  
+  geom_function(fun=exponential_growth, colour ='black') +
+  
+  xlim(0, 5000) +
+  
+  scale_y_continuous(trans='log10') + 
+    
   xlab("Time (minutes)") +
   
   ylab("Population Size") +
   
-  ggtitle("Figure 8: An Unhelpful visualisation") +
+  ggtitle("Figure 8: A Comparative Plot") +
   
   theme(plot.title = element_text(hjust = 0.5))
 
-  #scale_y_continuous(trans='log10')
 
-
-#It will be more useful to compare these plots side by side.
+#Finally I will show all of these graphs next to each other 
 #Using the gridExtra package
 install.packages("gridExtra")
 install.packages("grid")
@@ -293,15 +297,15 @@ library(gridExtra)
 library(grid)
 grid.arrange(
   logistic_growth_plot, exponential_growth_plot,                
-  unhelpful_plot,                    
+  Combined_plot,                    
   layout_matrix = rbind(c(1,2),   
                         c(3)), top = textGrob("Figure 7: Comparing Logistic and Exponential Growth Models", gp = gpar(fontsize = 14, fontface = "bold"))
 )
 ```
 
-![](images/clipboard-2776603530.png)
+![](images/clipboard-3200793569.png)
 
-In Figure 8, the red line represents our exponential growth function, whilst the black points represent logistic growth.
+In Figure 8, the red line represents our logistic growth function, whilst the black line represents our exponential growth function.
 
 ```{r}
 #In this chunk of R code I am ensuring that I keep a copy of all the required packages to run this code, in order to allow for reproducibility
