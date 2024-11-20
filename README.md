@@ -109,9 +109,7 @@ ggplot(aes(t,N), data = growth_data) +
        
   ggtitle("Figure 5: Plotting logistic_fun") +
   
-  theme(plot.title = element_text(hjust = 0.5)) + 
-  
-  scale_y_continuous(trans='log10')
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 ### Results:
@@ -267,14 +265,14 @@ exponential_growth_plot <- ggplot() +
   
   
 
-#It would be more useful to have the functions plotted on top of each other for easier comparisons
+#It would be more useful to have the functions plotted on top of each other for easier comparisons, using a log transformed y axis.
 
 
 Combined_plot <- ggplot() +
   
-  geom_function(fun=logistic_fun, colour="red") +
+  geom_function(aes(color = "Logistic Growth"), fun=logistic_fun) +
   
-  geom_function(fun=exponential_growth, colour ='black') +
+  geom_function(aes(color = "Exponential Growth"), fun=exponential_growth) +
   
   xlim(0, 5000) +
   
@@ -284,10 +282,14 @@ Combined_plot <- ggplot() +
   
   ylab("Population Size") +
   
-  ggtitle("Figure 8: A Comparative Plot") +
+  ggtitle("A Comparative Plot") +
   
-  theme(plot.title = element_text(hjust = 0.5))
-
+  scale_color_manual(values = c("Logistic Growth" = "red", 
+                                "Exponential Growth" = "black")) +
+  
+    theme(plot.title = element_text(hjust = 0.5),
+        legend.title = element_blank(),  
+        legend.position = "bottom")
 
 #Finally I will show all of these graphs next to each other 
 #Using the gridExtra package
@@ -299,13 +301,13 @@ grid.arrange(
   logistic_growth_plot, exponential_growth_plot,                
   Combined_plot,                    
   layout_matrix = rbind(c(1,2),   
-                        c(3)), top = textGrob("Figure 7: Comparing Logistic and Exponential Growth Models", gp = gpar(fontsize = 14, fontface = "bold"))
+                        c(3)), top = textGrob("Figure 8: Comparing Logistic and Exponential Growth Models", gp = gpar(fontsize = 14, fontface = "bold"))
 )
 ```
 
-![](images/clipboard-3200793569.png)
+![](images/clipboard-3428041198.png)
 
-In Figure 8, the red line represents our logistic growth function, whilst the black line represents our exponential growth function.
+![](images/clipboard-2950215783.png)
 
 ```{r}
 #In this chunk of R code I am ensuring that I keep a copy of all the required packages to run this code, in order to allow for reproducibility
