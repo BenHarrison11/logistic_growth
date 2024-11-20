@@ -301,13 +301,13 @@ grid.arrange(
   logistic_growth_plot, exponential_growth_plot,                
   Combined_plot,                    
   layout_matrix = rbind(c(1,2),   
-                        c(3)), top = textGrob("Figure 8: Comparing Logistic and Exponential Growth Models", gp = gpar(fontsize = 14, fontface = "bold"))
+                        c(3)), top = textGrob("Figure 7: Comparing Logistic and Exponential Growth Models", gp = gpar(fontsize = 14, fontface = "bold"))
 )
 ```
 
 ![](images/clipboard-3428041198.png)
 
-![](images/clipboard-2950215783.png)
+![](images/clipboard-1192608682.png)
 
 ```{r}
 #In this chunk of R code I am ensuring that I keep a copy of all the required packages to run this code, in order to allow for reproducibility
