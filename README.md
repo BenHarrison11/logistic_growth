@@ -50,7 +50,7 @@ The script in the above R chunk was the first script that was run. This script (
 
 The first way involved plotting the number of bacteria (N) against time (t). This was done using the ggplot2 package (see Figure 1). The result is the classic logistic model of population growth (where a maximum carrying capacity is eventually reached due to the resources becoming limited within the environment).
 
-![](images/clipboard-1043602679.png)Having done this, we then produced a semi-log plot (with the x-axis being linear, and the y-axis being log-transformed - see figure 2). This plot showed that at certain early time points (until approximately t=900), growth rate was linear (and therefore on a log transformed scale was exponential). It also showed that this was then followed by a period of constant population size at later time points (after approximately t=2500). It was important that we produced this plot, in order to help us carry out our linear model analysis later on.
+![](images/clipboard-1043602679.png)Having done this, I then produced a semi-log plot (with the x-axis being linear, and the y-axis being log-transformed - see figure 2). This plot showed that at certain early time points (until approximately t=900), growth rate was linear (and therefore on a log transformed scale was exponential). It also showed that this was then followed by a period of constant population size at later time points (after approximately t=2500). It was important that I produced this plot, in order to help me carry out my linear model analysis later on.
 
 ![](images/clipboard-508467475.png)
 
@@ -76,11 +76,11 @@ model2 <- lm(N ~ 1, data_subset2)
 summary(model2)
 ```
 
-In this section, we used the script in the above R chunk to fit different linear models to different parts of the semi-logged data that we saw above. The first case was when K \>\> N0, and t was small. In this first case, we used the dplyr package to filter the data set to time-points below t = 1500, to ensure that we only captured the period of exponential growth. The second case was when N(t) = K, and in this instance we used the dplyr package to filter the data-set to time-points above t = 2500, to ensure that we captured the population at carrying capacity. Having created our two data subsets, we then produced linear models for both, by using the lm() function. With the linear models successfully fitted to our data subsets, we then used the summary function to view estimates for the slope and intercept values, as well as their associated statistical information. These data are fully explored in the results section below.
+In this section, I used the script in the above R chunk to fit different linear models to different parts of the semi-logged data that is seen above. The first case was when K \>\> N0, and t was small. In this first case, I used the dplyr package to filter the data set to time-points below t = 1500, to ensure that I only captured the period of exponential growth. The second case was when N(t) = K, and in this instance I used the dplyr package to filter the data-set to time-points above t = 2500, to ensure that I captured the population at carrying capacity. Having created my two data subsets, I then produced linear models for both, by using the lm() function. With the linear models successfully fitted to my data subsets, I then used the summary function to view estimates for the slope and intercept values, as well as their associated statistical information. These data are fully explored in the results section below.
 
-### Plotting our Models:
+### Plotting my Models:
 
-In this section we generated our own logistic curve, using the script in the below R chunk to generate the function 'logistic_fun'. This function allowed us to change the parameters N0, r, and K (which we estimated from our linear models as detailed in the results section), and see how well our model fit (in red) onto the plotted data from the original experiment.csv file. Here, we were essentially seeing how well our model approximation fit onto the actual data (see Figure 5).
+In this section I generated my own logistic curve, using the script in the below R chunk to generate the function 'logistic_fun'. This function allowed me to change the parameters N0, r, and K (which were estimated from the linear models as detailed in the results section), and see how well my model fit (in red) onto the plotted data from the original experiment.csv file. Here, I was essentially seeing how well the model approximation fit onto the actual data (see Figure 5).
 
 ```{r}
 logistic_fun <- function(t) {
@@ -114,11 +114,11 @@ ggplot(aes(t,N), data = growth_data) +
 
 ### Results:
 
-In order to carry out our analyses (on the experiment.csv file), we created a linear approximation for the following logistic equation:
+In order to carry out the analyses (on the experiment.csv file), I created a linear approximation for the following logistic equation:
 
 N(t) = N0e\^(rt)
 
-This linear approximation was achieved by performing a log transformation, to get our equation in the form y = c + mx.
+This linear approximation was achieved by performing a log transformation, to get the equation in the form y = c + mx.
 
 ln(N(t)) = ln(N0e\^(rt))
 
@@ -126,13 +126,13 @@ ln(N) = ln(N0) + rtln(e)
 
 ln(N) = ln(N0) + rt
 
-We considered two cases as detailed in the above 'fitting linear models' section.
+I considered two cases as detailed in the above 'fitting linear models' section.
 
 #### Case 1: K \>\> N0 and t is small
 
 In this case ln(N) = ln(N0) + rt.
 
-The estimate for the intercept (ln(N0)) is equal to approximately 6.89. Therefore our approximation for N0 is equal to e\^6.89 which is approximately 982. The estimate for the gradient (r) is equal to 0.01. Therefore our approximation for r is 0.01.
+The estimate for the intercept (ln(N0)) is equal to approximately 6.89. Therefore my approximation for N0 is equal to e\^6.89 which is approximately 982. The estimate for the gradient (r) is equal to 0.01. Therefore my approximation for r is 0.01.
 
 #### **Figure 3: Output from summary(model1)**
 
@@ -144,7 +144,7 @@ N(t) = K + 0\*t
 
 N(t) = K
 
-Therefore our estimate for K is 6.00e+10.
+Therefore my estimate for K is 6.00e+10.
 
 #### **Figure 4: Output from summary(model2)**
 
@@ -158,9 +158,9 @@ r = 0.01
 
 K = 6.00e+10
 
-#### Using logistic_fun with our estimated parameters (Results from the 'Plotting our Models section):
+#### Using logistic_fun with my estimated parameters (Results from the 'Plotting our Models section):
 
-An excellent fit of our model is evidenced on the below plot, where the function logistic_fun was plotted on top of our original dataset.
+An excellent fit of our model is evidenced on the below plot, where the function logistic_fun was plotted on top of the original dataset.
 
 ![](images/clipboard-1053800775.png)
 
@@ -188,7 +188,7 @@ Therefore, assuming the population grows exponentially, the population size at t
 
 #### Comparing this value to the population size predicted under logistic growth
 
-Under the logistic growth model, the population size at t=4980 minutes is 6.00e+10
+Under the logistic growth model, the population size at t=4980 minutes is 6.00e+10.
 
 #### **Figure 6: The Logistic Growth Equation**
 
@@ -264,7 +264,6 @@ exponential_growth_plot <- ggplot() +
  
   
   
-
 #It would be more useful to have the functions plotted on top of each other for easier comparisons, using a log transformed y axis.
 
 
@@ -293,6 +292,7 @@ Combined_plot <- ggplot() +
 
 #Finally I will show all of these graphs next to each other 
 #Using the gridExtra package
+
 install.packages("gridExtra")
 install.packages("grid")
 library(gridExtra)
