@@ -198,7 +198,7 @@ Therefore:
 
 (4.17e+24)/(6.00e+10) = 6.95e+13
 
-The population size at time t=4980 is therefore 6.95e+13 times bigger when using the exponential growth model instead of the logistic growth model. This emphasises that population size predicted using an exponential growth model is many orders of magnitude bigger than predicted by a logistic growth model.
+The population size at time t=4980 is therefore 6.95e+13 times bigger when using the exponential growth model instead of the logistic growth model. This emphasises that population size predicted using an exponential growth model is many orders of magnitude bigger than predicted by a logistic growth model at this time point.
 
 ## Question 3
 
