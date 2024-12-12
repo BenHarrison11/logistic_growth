@@ -148,7 +148,7 @@ N(t) = K
 
 ![](images/clipboard-2420605694.png)
 
-Therefore my estimate for K is 6.00e+10.
+The estimate for the intercept (K) is 6.00e+10. Therefore my estimate for K is 6.00e+10.
 
 #### Estimates for parameters:
 
