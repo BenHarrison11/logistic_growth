@@ -132,11 +132,11 @@ I considered two cases as detailed in the above 'fitting linear models' section.
 
 In this case ln(N) = ln(N0) + rt.
 
-The estimate for the intercept (ln(N0)) is equal to approximately 6.89. Therefore my approximation for N0 is equal to e\^6.89 which is approximately 982. The estimate for the gradient (r) is equal to 0.01. Therefore my approximation for r is 0.01.
-
 #### **Figure 3: Output from summary(model1)**
 
 ![](images/clipboard-3236846853.png)
+
+The estimate for the intercept (ln(N0)) is equal to approximately 6.89. Therefore my approximation for N0 is equal to e\^6.89 which is approximately 982. The estimate for the gradient (r) is equal to 0.01. Therefore my approximation for r is 0.01.
 
 #### Case 2: t is large, and N(t) = K+0\*t
 
@@ -144,11 +144,11 @@ N(t) = K + 0\*t
 
 N(t) = K
 
-Therefore my estimate for K is 6.00e+10.
-
 #### **Figure 4: Output from summary(model2)**
 
 ![](images/clipboard-2420605694.png)
+
+Therefore my estimate for K is 6.00e+10.
 
 #### Estimates for parameters:
 
