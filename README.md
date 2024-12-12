@@ -305,6 +305,8 @@ grid.arrange(
 
 ![](images/clipboard-3428041198.png)
 
+This plot provides a clear picture of the difference between the exponential growth model and the logistic growth model.
+
 ![](images/clipboard-1192608682.png)
 
 ```{r}
